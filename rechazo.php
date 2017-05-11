@@ -44,6 +44,7 @@ $mail->Subject = 'Reporte de Pago Rechazado';
 //Replace the plain text body with one created manually
 $mail->AltBody = 'This is a plain-text message body';
 $body = "Reporte Rechazado por Motivo: ".$comenta;
+$body.="<br><br>Este correo es exclusivo para el envio de comprobantes para cualquier aclaraci&#243;n o duda comuniquese con el administrador del Fraccionamiento o a asociacioncolonos@hotmail.com";
 $mail->Body = $body;
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');

@@ -43,7 +43,7 @@ $mail->Subject = 'Comprobante de Pago Fraccionaminto El Country';
 //$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
 //Replace the plain text body with one created manually
 $mail->AltBody = 'This is a plain-text message body';
-$body = "Pulse <a href='http://countryvillahermosa.org/pdf.php?id=$id'>aqui</a> para descargar su Comprobante de Pago: ";
+$body = "Pulse <a href='http://countryvillahermosa.org/pdf.php?id=$id'>aqui</a> para descargar su Comprobante de Pago<br><br>Este correo es exclusivo para el envio de comprobantes para cualquier aclaraci&#243;n o duda comuniquese con el administrador del Fraccionamiento o a asociacioncolonos@hotmail.com ";
 $mail->Body = $body;
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');

@@ -22,13 +22,13 @@
             <tr>
               <td><?php  $query2 = "SELECT * FROM residente WHERE idResidente='".$line['idResidente']."'" ;
               $result2 = mysql_query($query2) or die('Consulta fallida'.mysql_error());
-           while ($line2=mysql_fetch_array($result2,MYSQL_ASSOC)) { echo $line2['Nombre'];} ?> </td>
+           while ($line2=mysql_fetch_array($result2,MYSQL_ASSOC)) { echo $line2['Nombre'];$correo=$line2['Email']; } ?> </td>
            <td><?php echo $line['Nombre'] ?></td>
             <td><?php echo $line['Descripcion'] ?></td>
               <td><a href="#my<?php echo $line['idPago']; ?>" data-toggle="modal">$<?php echo $line['Cantidad']; ?>.00</a></td>
               <td><?php echo $line['TipoPago'] ?></td>
               <td><a href=<?php echo "'/rep/descarga.php?ar=".$line['Comprobante']."'" ?>>Descargar</a></td>
-              <td><a href=<?php echo "'ver.php?id=".$line['idPago']."'" ?> class="btn btn-success" role="button">Aceptado</a></td>
+              <td><a href=<?php echo "'ver.php?cor=".$correo."&id=".$line['idPago']."'" ?> class="btn btn-success" role="button">Aceptado</a></td>
               <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?php echo $line['idPago']; ?> ">Rechazo</button></td>
               
 
@@ -72,12 +72,12 @@
         <h4 class="modal-title">Motivo de Rechazo Folio: <?php echo $line['idPago']; ?></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" method="post" action="rechazo.php?id=<?php echo $line['idPago']; ?>">
+        <form class="form-horizontal" method="post" action="rechazo.php?cor=<?php echo $correo; ?>&id=<?php echo $line['idPago']; ?>">
   
   <div class="form-group">
     
     <div class="col-sm-6">
-      <textarea class="form-control" rows="2" id="comment" name="comment"></textarea>
+      <textarea class="form-control" rows="2" id="comenta" name="comenta"></textarea>
     </div>
   </div>
   <button type="submit" class="bnt btn-info">Enviar</button>
