@@ -1,6 +1,7 @@
 
 <?php  
 session_start();
+include 'session.php';
 $cantidad = $_POST['cantidad'];
 $metodo = $_POST['metodo'];
 

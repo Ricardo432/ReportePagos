@@ -35,10 +35,6 @@ if (isset($_GET['m'])) {
       $c1="in active";
       break;
 
-    case '3':
-      $d ="class='active'";
-      $d1="in active";
-      break;
 
     default:
       # code...
@@ -58,7 +54,6 @@ if (isset($_GET['m'])) {
     <li <?php echo $a; ?> ><a data-toggle="tab" href="#Agre">Alta de Residentes</a></li>
     <li <?php echo $c; ?> ><a data-toggle="tab" href="#Residentes">Residentes</a></li>
     <li <?php echo $b; ?> ><a data-toggle="tab" href="#Reportepago">Reportes de pago<span class="badge"><?php echo $total; ?> </span></a></li>
-    <li <?php echo $d; ?> ><a data-toggle="tab" href="#ResgistroPago">Registro de pago manual</a></li>
     <li  ><a data-toggle="tab" href="#Validados">Historial de pagos</a></li>
     <li  ><a data-toggle="tab" href="#Corte">Reportes de Ingreso</a></li>
   </ul>
@@ -73,10 +68,7 @@ if (isset($_GET['m'])) {
     <div id="Residentes" class="tab-pane fade <?php echo $c1; ?> ">
      <?php include 'residentes.php'; ?>
     </div>
-    <div id="ResgistroPago" class="tab-pane fade  <?php echo $d1; ?> ">
-      
-      <?php include 'formReporte.php'; ?>
-    </div>
+    
     <div id="Validados" class="tab-pane fade   ">
       
       <?php include 'historialPagos.php'; ?>
