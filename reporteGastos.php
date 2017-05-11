@@ -56,7 +56,14 @@
 	<center><button type="submit" class="btn btn-info">Aceptar</button></center>
 </form>
 	<div class="row">
-		<div class="col-sm-8" style="text-align: right;">Total: </div>
+	<?php include 'conexion.php'; $query = "SELECT * from gasto where Fecha BETWEEN '".date('y-m')."01' and '".date('y-m')."31'";
+		$result = mysql_query($query);
+		$sum;
+		while ($line = mysql_fetch_array($result,MYSQL_ASSOC)) {
+			$line['Cantidad'];
+		}
+	 ?>
+		<div class="col-sm-8" style="text-align: right;">Total del gasto este mes: </div>
 	</div>
 	<div class="table-responsive">
 		
