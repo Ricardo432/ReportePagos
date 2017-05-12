@@ -69,7 +69,7 @@
         ?>
         <tr>
           <td><a href="formReporte.php?id=<?php echo  $li['idResidente']; ?>"> <?php echo  $li['idResidente']; ?></a> </td>
-          <td><a href="historialAd.php?name=<?php echo $li['idResidente'] ?>"> <?php echo  $li['Nombre']; ?></a> </td>
+          <td><a href="adminRe.php?name=<?php echo $li['idResidente'] ?>"> <?php echo  $li['Nombre']; ?></a> </td>
           <td> <?php echo  $li['Direccion']; ?> </td>
           <td> <?php echo  $li['NombreRenta']; ?> </td>
           <td> <?php echo  $li['TipoDomicilio']; ?> </td>
