@@ -40,8 +40,7 @@ while ($lin=mysql_fetch_array($result,MYSQL_ASSOC)) {
 <tr>
  	<td></td>
     <td >Total: </td>
-    <td><?php setlocale(LC_MONETARY, 'en_US');
-echo money_format('%(#2n', $total) . "\n"; ?></td>
+    <td>$<?php echo $total; ?>.00</td>
 </tr>
 
 </table>
@@ -50,21 +49,21 @@ require('fpdf/html_table.php');
 
 $es ="Reporte de ingresos a la Fecha de: ".date('y-m-d')." 
 <br>
-Por un monto de: ".money_format('%(#2n', $total);
+Por un monto de: $".$total.".00 ";
 $filename= "Reporte".time().".pdf";
 $query2 = "INSERT into corte(Fecha,Url,Total) values('".date('y-m-d')."','$filename','$total')";
 mysql_query($query2);
-
-
-	$query2="UPDATE pagos set Corte=(SELECT max(idCorte) FROM corte) where Corte ='0'";
+while ($lin=mysql_fetch_array($result,MYSQL_ASSOC)) {
+	$query2="UPDATE pagos set Corte=(SELECT max(idCorte) FROM corte) where idPago ='$lin['idPago']'";
 	mysql_query($query2);
-
+}
 
 $pdf=new PDF_HTML_Table();
 
 $pdf->AddPage();
 $pdf->SetFont('Arial','',12);
-$pdf->WriteHTML("                                         Asociacion de Colonos el Country Villahermosa<br>");
+$pdf->WriteHTML("                                         Asociacion de Colonos el Country Villahermosa<br>
+");
 $pdf->SetFont('Arial','',11);
 $pdf->WriteHTML($es);
 $pdf->SetFont('Arial','',8);

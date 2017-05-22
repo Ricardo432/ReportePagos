@@ -12,7 +12,7 @@ $mail->SMTPDebug = 2;
 //Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
 //Set the hostname of the mail server
-$mail->Host = 'mail.intekra.com.mx';
+$mail->Host = 'intekra.com.mx';
 // use
 // $mail->Host = gethostbyname('smtp.gmail.com');
 // if your network does not support SMTP over IPv6
@@ -22,8 +22,9 @@ $mail->Port = 26;
 ///$mail->SMTPSecure = 'tls';
 //Whether to use SMTP authentication
 ///$mail->SMTPAuth = true;
-$mail->SMTPAuth = false;
-$mail->SMTPSecure = false;
+$mail->SMTPSecure = 'tls';
+//Whether to use SMTP authentication
+$mail->SMTPAuth = true;
 //Username to use for SMTP authentication - use full email address for gmail
 $mail->Username = "ingenieria@intekra.com.mx";
 //Password to use for SMTP authentication

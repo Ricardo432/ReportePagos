@@ -40,9 +40,9 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-2 control-label">Cantidad:$</label>
+		<label class="col-sm-2 control-label">Cantidad:</label>
 		<div class="col-sm-6">
-			<input type="number" step="any" name="cantidad" class="form-control">
+			<input type="text" name="cantidad" class="form-control">
 		</div>
 	</div>
 	<div class="form-group">
@@ -56,9 +56,9 @@
 	<center><button type="submit" class="btn btn-info">Aceptar</button></center>
 </form>
 	<div class="row">
-	<?php include 'conexion.php'; 
+	<?php include 'conexion.php';
 	date_default_timezone_set("America/Mexico_City");
-	$query = "SELECT * from gasto where Fecha BETWEEN '".date('Y-m')."-01' and '".date('Y-m')."-31'";
+	 $query = "SELECT * from gasto where Fecha BETWEEN '".date('Y-m')."-01' and '".date('Y-m')."-31'";
 		$result = mysql_query($query);
 		$sum =0;
 		while ($line = mysql_fetch_array($result,MYSQL_ASSOC)) {
@@ -67,11 +67,10 @@
 		}
 	 ?>
 	 <br>
-		<div class="col-sm-8" style="text-align: right;">Total del gasto este mes: <?php setlocale(LC_MONETARY, 'en_US');
-echo money_format('%(#2n', $sum) . "\n";  ?> </div>
+		<div class="col-sm-8" style="text-align: right;">Total del gasto este mes: $<?php echo $sum; ?>.00 </div>
 		
 	</div>
-	<div class="row"><div class="col-sm-8" style="text-align: right;"><form class="form-inline" method="post" action="rep/reporteMes.php">
+	<div class="row"><div class="col-sm-8" style="text-align: right;"><form class="form-inline" method="post" action="reporteMes.php">
   <div class="form-group">
     <label for="year">Año:</label>
     <select class="form-control" id="year" name="year">
@@ -162,7 +161,7 @@ echo money_format('%(#2n', $sum) . "\n";  ?> </div>
 				<td><?php echo $line['Empresa']; ?></td>
 				<td><?php echo $line['Concepto']; ?></td>
 				<td><?php echo $line['Destino']; ?></td>
-				<td><?php echo money_format('%(#2n',($line['Cantidad'])  ) . "\n";  ; ?></td>
+				<td><?php echo $line['Cantidad']; ?></td>
 				<td><?php echo $line['NumFactura']; ?></td>
 			</tr>
 			<?php

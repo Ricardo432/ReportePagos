@@ -32,7 +32,7 @@
               <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal<?php echo $line['idPago']; ?> ">Rechazo</button></td>
               
 
-<div id="my<?php echo $line['idPago']; ?>" class="modal fade" role="dialog">
+<div id="my<?php echo $line['idPago']; ?>" class="modal fade" data-backdrop=”static” data-keyboard=”false” role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->

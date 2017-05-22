@@ -14,7 +14,7 @@
 	<div class="page-header">
 		<h4>Historial</h4>
 	</div>
-	<a href="admin.php?m=2" class="btn btn-success" role="button">Regresar</a>
+	
 	<div class="table-responsive">
 	<table class="table table-bordered">
 		<thead>

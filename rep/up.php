@@ -13,7 +13,7 @@ include ('conexion.php');
            $query ="INSERT INTO pagos (idResidente,Cantidad,TipoPago,FechaRegistro) VALUES ('".$re."','".$cantidad."','".$metodo."','20".date("y-m-d")."')";
         mysql_query($query) or die('Conexion fallida'.mysql_error());
             
-      		echo "<script language='javascript'>window.location='http://countryvillahermosa.org/admin.php?m=0'</script>";
+      		echo "<script language='javascript'>window.location='../admin.php?m=0'</script>";
       	} else {
 
           $r=strripos($_FILES['archivo']['name'],".");
@@ -26,7 +26,7 @@ include ('conexion.php');
           $nombre = $_POST['nombre'];
             $query ="INSERT INTO pagos (idResidente,Cantidad,TipoPago,Comprobante,FechaRegistro,Descripcion,Nombre) VALUES ('".$_SESSION['name']."','".$cantidad."','".$metodo."','".$nombre_archivo."','20".date("y-m-d")."','$des','$nombre')";
          mysql_query($query) or die('Conexion fallida'.mysql_error());
-      		echo "<script language='javascript'>window.location='http://countryvillahermosa.org/panelResidente.php?er=2'</script>";
+      		echo "<script language='javascript'>window.location='../panelResidente.php?er=2'</script>";
           }else{ 
             echo "Ocurrió algún error al subir el fichero. No pudo guardarse."; 
           }

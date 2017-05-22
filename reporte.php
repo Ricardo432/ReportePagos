@@ -12,12 +12,14 @@
 <body>
 <div class="container">
 <div class="page-header"><h3>Reporte de Corte</h3></div>
-<div><a href="/rep/newReporte.php" target="_blank" class="btn btn-info" role="button" <?php include 'conexion.php';
-$query = "SELECT * FROM pagos where Corte='0' and (Revisado='1' and Rechazado='0')";
+<div><a  <?php include 'conexion.php';
+$query = "SELECT * FROM pagos where Corte='0' ";
 $result = mysql_num_rows(mysql_query($query));
 if ($result == 0) {
- 	echo "disable";
- } ?> >Generar Nuevo Reporte</a></div>
+ 	echo "href='#' target='_blank' class='btn btn-info' role='button' disabled";
+ }else{
+ 	echo "href='/rep/newReporte.php' target='_blank' class='btn btn-info' role='button'";
+ 	} ?> >Generar Nuevo Reporte</a></div>
 	<div class="table-responsive">
 		<table class="table table-bordered">
 			<thead>
@@ -34,7 +36,7 @@ if ($result == 0) {
 					?>
 					<tr>
 						<td><?php echo $lin['Fecha']; ?></td>
-						<td><?php echo $lin['Total']; ?></td>
+						<td>$<?php echo $lin['Total']; ?>.00</td>
 						<td><a href="/rep/descarga.php?ar=<?php echo $lin['Url']; ?>">Descarga</a></td>
 					</tr>
 					<?php

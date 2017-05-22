@@ -28,10 +28,10 @@
       <script type="text/javascript">
         $(document).ready(function () {
             (function ($) {
-                $('#filtrar').keyup(function () {
+                $('#filtrar2').keyup(function () {
                     var rex = new RegExp($(this).val(), 'i');
-                    $('.buscar tr').hide();
-                    $('.buscar tr').filter(function () {
+                    $('.buscar2 tr').hide();
+                    $('.buscar2 tr').filter(function () {
                         return rex.test($(this).text());
                     }).show();
                 })
@@ -45,7 +45,7 @@
       <h1></h1>
 
       <div class="input-group"> <span class="input-group-addon">Buscar</span>
-        <input id="filtrar" type="text" class="form-control" placeholder="Ingresa datos del cleinte">
+        <input id="filtrar2" type="text" class="form-control" placeholder="Ingresa datos del cleinte">
       </div>
 
       <table class="table table-hover">
@@ -59,7 +59,7 @@
             <th>Fecha de Validaci&#243;n</th>
           </tr>
         </thead>
-        <tbody class="buscar">
+        <tbody class="buscar2">
         <?php include 'conexion.php';
          $query = "SELECT * FROM pagos WHERE Revisado='1' and Rechazado='0' order by FechaAceptado desc";
           $result = mysql_query($query) or die('Consulta fallida'.mysql_error());

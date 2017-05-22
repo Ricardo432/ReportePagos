@@ -20,14 +20,13 @@
 	<div class="page-header">
 		<h3> Registro de Pagos</h3>
 	</div>
-	
+	<?php if ($er=='2') {}else{ ?>
+	<div class="alert alert-warning">
+  <strong>¡Importante!</strong> Ingresar la cantidad depositada.
+</div>
+<?php } ?>
 	<center><form enctype="multipart/form-data" action="/rep/up.php" method="post" class="form-horizontal">
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Nombre del Residente</label>
-   		 	<div class="col-sm-6">
-     		 	<input class="form-control" id="focusedInput" type="text" name="nombre" required placeholder="Responsable del inmueble">
-    		</div>
-		</div>
+
 		
 		<div class="form-group">
 		  <label class="col-sm-2 control-label">Metodo de pago:</label>
@@ -40,15 +39,9 @@
  		 </div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Cantidad: $</label>
+			<label class="col-sm-2 control-label">Cantidad:</label>
    		 	<div class="col-sm-6">
-     		 	<input class="form-control" id="focusedInput" type="number" step="any" name="cantidad" required>
-    		</div>
-		</div>
-		<div class="form-group">
-			<label class="col-sm-2 control-label">¿Qué estoy pagando?</label>
-   		 	<div class="col-sm-6">
-     		 	<input class="form-control" id="focusedInput" type="text" name="descrip" required placeholder="¡Describalo!">
+     		 	<input class="form-control" id="focusedInput" type="text" name="cantidad" required>
     		</div>
 		</div>
 		<div class="form-group">
@@ -61,7 +54,7 @@
 		<button type="submit" class="btn btn-info">Aceptar</button>
 		
 	</form></center>
-		    
+		
 	</div>
 	
 

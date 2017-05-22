@@ -24,7 +24,7 @@
 	<div class="page-header">
 		<h3> Registro de Pagos</h3>
 	</div>
-	<?php $id=$_GET['id']; ?>
+	<?php $id=$_GET['name']; ?>
 	<center><form enctype="multipart/form-data" action="/rep/up.php?id=<?php echo $id ?>" method="post" class="form-horizontal">
 	<div class="form-group">
 		
@@ -41,9 +41,9 @@ $(document).ready(function() {
 	</div>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Cantidad</label>
+			<label class="col-sm-2 control-label">Cantidad: $</label>
    		 	<div class="col-sm-6">
-     		 	<input class="form-control" id="focusedInput" type="text" name="cantidad" >
+     		 	<input class="form-control" id="focusedInput" type="number" step="any" name="cantidad" >
     		</div>
 		</div>
 		<div class="form-group">

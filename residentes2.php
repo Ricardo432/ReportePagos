@@ -106,7 +106,7 @@
     </div>
   </div>
   <div class="form-group"> 
-  <label >Inmueble</label>
+  <label >Tipo de inmueble</label>
     <div class="col-sm-offset-2 col-sm-10">
       <div class="select">
      <select name="tipoDomicilio" id="tipo" class="form-control">
