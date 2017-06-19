@@ -15,7 +15,7 @@
         {
             
             session_destroy();
-            header("Location: index2.php?res=3&r=1"); 
+            header("Location: index.php?res=3&r=1"); 
         }
     }
     
@@ -25,7 +25,8 @@
 	
 }else{
    
-   header("location:index2.php?res=3&r=0");
+   session_destroy();
+   header("Location:index.php?res=3&r=0");
 
    
 }

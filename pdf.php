@@ -36,6 +36,14 @@ while ($lin=mysql_fetch_array($result,MYSQL_ASSOC)) {
     <tr>
         <td style="text-align: center;" colspan="2"><?php echo $line['Nombre']; $nombre = $line['Nombre']; ?> </td>
     </tr>
+    <?php if ($line['NombreRenta'] != "" || is_null( $line['NombreRenta'])) { ?>
+    <tr>
+        <td style="text-align: center;" colspan="2">Rentado a: </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;" colspan="2"><?php echo $line['NombreRenta'];  ?> </td>
+    </tr>
+    <?php } ?>
     <tr>
         <td style="text-align: center;" colspan="2">Direcci&#243;n: <?php echo $line['Direccion']; ?> </td>
     </tr>

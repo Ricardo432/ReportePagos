@@ -53,17 +53,17 @@ Por un monto de: $".$total.".00 ";
 $filename= "Reporte".time().".pdf";
 $query2 = "INSERT into corte(Fecha,Url,Total) values('".date('y-m-d')."','$filename','$total')";
 mysql_query($query2);
-while ($lin=mysql_fetch_array($result,MYSQL_ASSOC)) {
-	$query2="UPDATE pagos set Corte=(SELECT max(idCorte) FROM corte) where idPago ='$lin['idPago']'";
+
+
+	$query2="UPDATE pagos set Corte=(SELECT max(idCorte) FROM corte) where Corte ='0'";
 	mysql_query($query2);
-}
+
 
 $pdf=new PDF_HTML_Table();
 
 $pdf->AddPage();
 $pdf->SetFont('Arial','',12);
-$pdf->WriteHTML("                                         Asociacion de Colonos el Country Villahermosa<br>
-");
+$pdf->WriteHTML("                                         Asociacion de Colonos el Country Villahermosa<br>");
 $pdf->SetFont('Arial','',11);
 $pdf->WriteHTML($es);
 $pdf->SetFont('Arial','',8);

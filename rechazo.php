@@ -3,7 +3,7 @@
  $correo = $_GET['cor'];
  $comenta = $_POST['comenta'];
 include 'conexion.php';
-$query = "UPDATE pagos set Revisado='1', Rechazado='1', Motivo='$comenta' where idPago='$id'";
+$query = "UPDATE pagos set Revisado='1', Rechazado='1', Motivo='$comenta', FechaAceptado = ".date('Y-m-d')." where idPago='$id'";
 mysql_query($query);
 require 'PHPMail/PHPMailerAutoload.php';
 //Create a new PHPMailer instance

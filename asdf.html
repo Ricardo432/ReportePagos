@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+i=1;
+function appendText() {
+    var txt1 = "<p> <label class='w3-text-teal'><b>Usuario"+i+"</b></label><input class='w3-input w3-border w3-sand' name='user1' type='text'></p>";   
+    txt1+="<p> <label class='w3-text-teal'><b>Tarjeta</b></label><input class='w3-input w3-border w3-sand' name='tar' type='text'></p>";// Create text with HTML
+    var txt2 = $("<p></p>").text("Text.");  // Create text with jQuery
+    var txt3 = document.createElement("p");
+    txt3.innerHTML = "Text.";               // Create text with DOM
+    $("body").append(txt1, txt2, txt3);     // Append new elements
+    i++;
+}
+</script>
+</head>
+<body>
+
+<p>This is a paragraph.</p>
+<button onclick="appendText()">Append text</button>
+
+</body>
+</html>

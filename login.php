@@ -1,3 +1,4 @@
+
 <?php 
 include 'conexion.php';
 $email=$_POST['email'];
@@ -10,7 +11,10 @@ $result = mysql_query($query) or die('consulta fallida'.mysql_error());
 $res = mysql_num_rows($result);
 
 if ($res==0) {
+	//header('Location: index2.php?res=1');
 	echo "<script language='javascript'>window.location='index2.php?res=1'</script>";
+	exit();
+
 } else {
 	while ($line = mysql_fetch_array($result,MYSQL_ASSOC)) {
 		
@@ -23,7 +27,10 @@ if ($res==0) {
 					$_SESSION['img'] = $line['Imagen'];
 					 $_SESSION['tiempo'] = time();
 
-					echo "<script language='javascript'>window.location='admin.php?m=0'</script>";
+					//header('Location: admin.php?m=0');
+					 echo "<script language='javascript'>window.location='admin.php?m=0'</script>";
+					 exit();
+
 			
 
 		} else {
@@ -44,7 +51,10 @@ if ($res==0) {
 					$_SESSION['user'] = $line['idUsuario'];
 					 $_SESSION['tiempo'] = time();
 					//setcookie('name', $lin['idResidente'], time() + (86400 * 30), "/");
-					echo "<script language='javascript'>window.location='panelResidente.php'</script>";
+					//header('Location: panelResidente.php');
+					 echo "<script language='javascript'>window.location='panelResidente.php'</script>";
+					 exit();
+
 				}
 				
 				

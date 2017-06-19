@@ -23,7 +23,11 @@
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Aceptar</button>
       </form>
-      <?php if (isset($_GET['res'])) {
+      <?php 
+   session_start();
+   session_destroy();
+   $_SESSION['tiempo'] =time();
+      if (isset($_GET['res'])) {
          $re = $_GET['res'];
          if ($re=='1') {
            echo "<div class='alert alert-danger'>

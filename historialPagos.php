@@ -61,7 +61,7 @@
         </thead>
         <tbody class="buscar2">
         <?php include 'conexion.php';
-         $query = "SELECT * FROM pagos WHERE Revisado='1' and Rechazado='0' order by FechaAceptado desc";
+         $query = "SELECT * FROM pagos WHERE (Revisado='1' and Rechazado='0') and FechaAceptado between '".date('Y-m')."-1' and '".date('Y-m')."-31' order by FechaAceptado desc";
           $result = mysql_query($query) or die('Consulta fallida'.mysql_error());
            while ($line=mysql_fetch_array($result,MYSQL_ASSOC)) {
             ?> 

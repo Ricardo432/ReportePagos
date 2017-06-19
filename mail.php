@@ -12,7 +12,7 @@ $mail->SMTPDebug = 2;
 //Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
 //Set the hostname of the mail server
-$mail->Host = 'intekra.com.mx';
+$mail->Host = 'xpcp16015.xpress.com.mx';
 // use
 // $mail->Host = gethostbyname('smtp.gmail.com');
 // if your network does not support SMTP over IPv6
@@ -26,23 +26,32 @@ $mail->SMTPSecure = 'tls';
 //Whether to use SMTP authentication
 $mail->SMTPAuth = true;
 //Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = "ingenieria@intekra.com.mx";
+$mail->Username = "instalaciones@intekra.com.mx";
 //Password to use for SMTP authentication
 $mail->Password = "argento1001$";
 //Set who the message is to be sent from
-$mail->setFrom('ingenieria@intekra.com.mx', 'First Last');
+$mail->setFrom('instalaciones@intekra.com.mx');
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@example.com', 'First Last');
 //Set who the message is to be sent to
-$mail->addAddress('ricardo43.256@gmail.com', 'John Doe');
+$mail->addAddress('ventas@intekra.com.mx');
+$mail->addAddress('mcontrol@intekra.com.mx');
+$mail->addAddress('ingenieria@intekra.com.mx');
 //Set the subject line
-$mail->Subject = 'PHPMailer GMail SMTP test';
+$mail->Subject = 'Nueva ODI';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__));
 //Replace the plain text body with one created manually
 $mail->AltBody = 'This is a plain-text message body';
-$mail->Body = 'Hello, <b>my friend</b>! This message uses HTML!';
+$mail->Body = '<p>Nombre: $nombre</p>
+<p>Direccion: $direccion</p>
+<p>Correo: $email</p>
+<p>Telefono: $telefono</p>
+<p>Paquete: $paq</p>
+<p>Tipo de Instación: $tipoIns</p>
+<p>Vendedor(a): $vendedor</p>
+';
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');
 //send the message, check for errors

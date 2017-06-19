@@ -16,6 +16,7 @@
 <?php
 
 include 'conexion.php';
+setlocale(LC_MONETARY, 'en_US');
 $total =0; 
 $y = $_POST['year']; 
 $m = $_POST['mes'];
@@ -27,10 +28,10 @@ $m = $_POST['mes'];
 ?>
     <tr>
         <td><?php echo $line['Fecha']; ?></td>
-        <td><?php echo $line['Empresa']; ?></td>
-        <td><?php echo $line['Concepto']; ?></td>
-        <td><?php echo $line['Destino']; ?></td>
-        <td><?php echo $line['Cantidad']; ?></td>
+        <td><?php echo utf8_decode($line['Empresa']);   ?></td>
+        <td><?php echo utf8_decode($line['Concepto']); ?></td>
+        <td><?php echo utf8_decode($line['Destino']); ?></td>
+        <td><?php echo money_format('%(#2n', $line['Cantidad']) . "\n"; ?></td>
         <td><?php echo $line['NumFactura']; ?></td>
     </tr>
 
@@ -39,7 +40,8 @@ $m = $_POST['mes'];
 <tr>
  	<td></td>
     <td >Total: </td>
-    <td>$<?php echo $total; ?>.00</td>
+    <td><?php 
+echo money_format('%(#2n', $total) . "\n";  ?></td>
 </tr>
 
 </table>
@@ -84,17 +86,17 @@ switch ($m) {
         $mes= "Diciembre ";
         break;
 }
-$es ="Reporte de ingresos del mes de ".$mes."del ".$y." 
+$es =utf8_decode("Reporte de ingresos del mes de ".$mes." del año ".$y." 
 <br>
-Por un monto de: $".$total.".00 ";
+Por un monto de: ".money_format('%(#2n', $total) . "\n");
 $filename= "ReporteMensual".time().".pdf";
 
-
+$titu=utf8_decode("Asociación de Colonos el Country Villahermosa");
 $pdf=new PDF_HTML_Table();
 
 $pdf->AddPage();
 $pdf->SetFont('Arial','',12);
-$pdf->WriteHTML("                                         Asociacion de Colonos el Country Villahermosa<br>
+$pdf->WriteHTML("                                         ".$titu."<br>
 ");
 $pdf->SetFont('Arial','',11);
 $pdf->WriteHTML($es);

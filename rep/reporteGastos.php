@@ -56,9 +56,7 @@
 	<center><button type="submit" class="btn btn-info">Aceptar</button></center>
 </form>
 	<div class="row">
-	<?php include 'conexion.php';
-	date_default_timezone_set("America/Mexico_City");
-	 $query = "SELECT * from gasto where Fecha BETWEEN '".date('Y-m')."-01' and '".date('Y-m')."-31'";
+	<?php include 'conexion.php'; $query = "SELECT * from gasto where Fecha BETWEEN '".date('Y-m')."-01' and '".date('Y-m')."-31'";
 		$result = mysql_query($query);
 		$sum =0;
 		while ($line = mysql_fetch_array($result,MYSQL_ASSOC)) {
