@@ -68,7 +68,11 @@
           
         ?>
         <tr>
+<<<<<<< HEAD
           <td> <?php echo  $li['idResidente']; ?> </td>
+=======
+          <td><a href="formReporte.php?id=<?php echo  $li['idResidente']; ?>"> <?php echo  $li['idResidente']; ?></a> </td>
+>>>>>>> origin/master
           <td><a href="adminRe.php?name=<?php echo $li['idResidente'] ?>"> <?php echo  $li['Nombre']; ?></a> </td>
           <td> <?php echo  $li['Direccion']; ?> </td>
           <td> <?php echo  $li['NombreRenta']; ?> </td>
