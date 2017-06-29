@@ -58,6 +58,33 @@ class Busqueda(object):
                 db.close ()
 
                 return a
+        def insertRe(tag,activo,nombre):
+                db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
+                cur = db.cursor()
+                cur.execute("INSERT INTO acceso.resiedente (tag,activo,nombre) values('"+tag+"','"+activo+"','"+nombre+"')")
+                cur.close()
+                db.close()
+
+        def updateRe(tag,activo,nombre):
+                db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
+                cur = db.cursor()
+                cur.execute("UPDATE acceso.resiedente set activo='"+activo+"',nombre='"+nombre+"' where tag='"+tag"'")
+                cur.close()
+                db.close()
+        def insertIn(codigo,activo,fecha):
+                db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
+                cur = db.cursor()
+                cur.execute("INSERT INTO acceso.resiedente (codigo,activo,fecha) values('"+codigo+"','"+activo+"','"+fecha+"')")
+                cur.close()
+                db.close()
+
+        def updateIn(codigo,activo,fecha):
+                db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
+                cur = db.cursor()
+                cur.execute("UPDATE acceso.resiedente set activo='"+activo+"',fecha='"+fecha+"' where codigo='"+codigo"'")
+                cur.close()
+                db.close()
+
 
         def fire(tag):
                 from firebase import firebase
@@ -69,7 +96,7 @@ class Busqueda(object):
                         #print(result)
                         decoded = json.loads(result)
                         #print 'DECODED:', decoded
-                        if decode['activo'] == 1 :
+                        if decode['status'] == 1 :
                                 return True
                         else:
                                 return False
@@ -78,5 +105,22 @@ class Busqueda(object):
 
                 
         print(fire(43456586))
+
+        def dbfire():
+            from firebase import firebase
+            firebase = firebase.FirebaseApplication('https://controlacceso-2e26e.firebaseio.com/', None)
+            result = firebase.get('/total', 'residente')
+            result = json.dumps(result)
+            decoded = json.loads(result)
+            x = decoded['resident']
+            for i in range(1, x):
+                try:
+                    firebase = firebase.FirebaseApplication('https://controlacceso-2e26e.firebaseio.com/', None)
+                    result = firebase.get('/users', str(i))
+                    result =json.dumps(result)
+                    decoded = json.loads(result)
+
+
+
 
                 
