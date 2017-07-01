@@ -61,27 +61,27 @@ class Busqueda(object):
         def insertRe(tag,activo,nombre):
                 db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
                 cur = db.cursor()
-                cur.execute("INSERT INTO acceso.resiedente (tag,activo,nombre) values('"+tag+"','"+activo+"','"+nombre+"')")
+                cur.execute("INSERT INTO acceso.residente (tag,activo,nombre) values('"+tag+"','"+activo+"','"+nombre+"')")
                 cur.close()
                 db.close()
 
         def updateRe(tag,activo,nombre):
                 db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
                 cur = db.cursor()
-                cur.execute("UPDATE acceso.resiedente set activo='"+activo+"',nombre='"+nombre+"' where tag='"+tag"'")
+                cur.execute("UPDATE acceso.residente set activo='"+activo+"',nombre='"+nombre+"' where tag='"+tag+"'")
                 cur.close()
                 db.close()
         def insertIn(codigo,activo,fecha):
                 db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
                 cur = db.cursor()
-                cur.execute("INSERT INTO acceso.resiedente (codigo,activo,fecha) values('"+codigo+"','"+activo+"','"+fecha+"')")
+                cur.execute("INSERT INTO acceso.invitado (codigo,activo,fecha) values('"+codigo+"','"+activo+"','"+fecha+"')")
                 cur.close()
                 db.close()
 
         def updateIn(codigo,activo,fecha):
                 db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
                 cur = db.cursor()
-                cur.execute("UPDATE acceso.resiedente set activo='"+activo+"',fecha='"+fecha+"' where codigo='"+codigo"'")
+                cur.execute("UPDATE acceso.invitado set activo='"+activo+"',fecha='"+fecha+"' where codigo='"+codigo+"'")
                 cur.close()
                 db.close()
 
@@ -107,18 +107,35 @@ class Busqueda(object):
         print(fire(43456586))
 
         def dbfire():
-            from firebase import firebase
-            firebase = firebase.FirebaseApplication('https://controlacceso-2e26e.firebaseio.com/', None)
-            result = firebase.get('/total', 'residente')
-            result = json.dumps(result)
-            decoded = json.loads(result)
-            x = decoded['resident']
-            for i in range(1, x):
-                try:
-                    firebase = firebase.FirebaseApplication('https://controlacceso-2e26e.firebaseio.com/', None)
-                    result = firebase.get('/users', str(i))
-                    result =json.dumps(result)
-                    decoded = json.loads(result)
+                db = MySQLdb.connect(host="localhost", user="root", passwd="250901", db="acceso")
+                cur = db.cursor()
+                from firebase import firebase
+                firebase = firebase.FirebaseApplication('https://controlacceso-2e26e.firebaseio.com/', None)
+                result = firebase.get('/total', None)
+                result = json.dumps(result)
+                decoded = json.loads(result)
+                x = decoded['residente']
+                for i in range(1, x):
+                        try:
+                                firebase = firebase.FirebaseApplication('https://controlacceso-2e26e.firebaseio.com/', None)
+                                result = firebase.get('/users', str(i))
+                                result =json.dumps(result)
+                                decoded2 = json.loads(result)
+                                cur.execute("DELETE FROM acceso.residente where tag='"+decoded['tag']+"'")
+                                insertRe(decoded2['tag'],decoded2['status'],decoded2['nombre'])
+                        except:
+                            
+                x = decoded['invitado']
+                for i in range(1,x):
+                        try:
+                                firebase = firebase.FirebaseApplication('https://controlacceso-2e26e.firebaseio.com/', None)
+                                result = firebase.get('/users', str(i))
+                                result =json.dumps(result)
+                                decoded2 = json.loads(result)
+                                cur.execute("DELETE FROM acceso.residente where codigo='"+decoded['codigo']+"'")
+                                insertIn(decoded2['codigo'],decoded2['status'],decoded2['fecha'])
+                        except:
+
 
 
 

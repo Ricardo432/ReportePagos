@@ -28,6 +28,7 @@ $result = mysql_query($query);
 while ($line = mysql_fetch_array($result,MYSQL_ASSOC)) {
    $inicio = $line['Final'];
 }
+$fin = $inicio+$en-$sum;
 setlocale(LC_MONETARY, 'en_US');
     
  ?>
@@ -36,13 +37,13 @@ setlocale(LC_MONETARY, 'en_US');
 <div  >
 <table style="width: 90%; padding: 20px 30px 50px 80px;" >
 <tr >
-    <td colspan="2" ><img src="http://countryvillahermosa.org/img/logo1.jpeg" style="width:150px; height:60px;"><b> Fraccionamiento el Country</b></td>
+    <td colspan="2" ><img src="img/logo1.jpeg" style="width:150px; height:60px;"><b> Fraccionamiento el Country</b></td>
     
 </tr>
     
     <tr>
         <td colspan="2" style="padding-top: 20px;"><b>Balance general de ingresos y egresos
-del mes de mayo del a&#241;o del periodo 1 - 31</b></td>
+del mes de Junio del a&#241;o del periodo 1 - 30</b></td>
     </tr>
     <tr>
        
@@ -67,7 +68,7 @@ del mes de mayo del a&#241;o del periodo 1 - 31</b></td>
     <tr style="padding-top: 20px;">
         <td style="padding-top: 20px;"><b>Saldo Global</b></td>
     </tr>
-    <tr><td>Saldo Global Final: <?php echo money_format('%(#2n',(($inicio+$en-$sum))  ) . "\n"; ?></td></tr>
+    <tr><td>Saldo Global Final: <?php echo money_format('%(#2n',(($fin))  ) . "\n"; ?></td></tr>
 </table>
 
 </div>
@@ -81,5 +82,7 @@ $dompdf->set_paper(0,0,73.70,104.88);
 $dompdf->render();
 $pdf = $dompdf->output();
 $filename = $y.'.pdf';
+$query = "INSERT into balance_final(Entrada,Salida,Final,Fecha,NumValidados,PDF) values('".$en."','".$sum."','".$fin."','".$y."','".$nPagos."','".$filename."')";
+mysql_query($query);
 file_put_contents($filename, $pdf);
 $dompdf->stream($filename); ?>
